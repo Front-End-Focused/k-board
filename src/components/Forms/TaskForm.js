@@ -1,18 +1,23 @@
+import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { tasksAdd } from "../../store/actions";
 
 function TaskForm() {
   const dispatch = useDispatch();
+  const inputTitle = useRef();
 
   function onSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
+    if (!(formData.get("title") && formData.get("assignee"))) return;
     dispatch(
       tasksAdd({
         title: formData.get("title"),
         assignee: formData.get("assignee"),
       })
     );
+    event.target.reset();
+    inputTitle.current.focus();
   }
 
   return (
@@ -29,6 +34,7 @@ function TaskForm() {
           aria-label="Task"
           autoComplete="off"
           name="title"
+          ref={inputTitle}
         />
       </div>
       <div className="col-md-2">
