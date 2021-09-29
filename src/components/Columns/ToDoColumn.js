@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 import TasksList from "../Tasks/TasksList";
 
 function ToDoColumn() {
+  const tasks = useSelector((state) => state.tasks);
   return (
     <div className="col-md-3">
       <div className="row mb-3">
@@ -12,7 +14,7 @@ function ToDoColumn() {
         </div>
       </div>
       <div className="bg-secondary bg-gradient bg-opacity-25 p-2">
-        <TasksList tasks={[{ id: 1, title: "Task #1" }]} />
+        <TasksList tasks={tasks} />
       </div>
     </div>
   );
