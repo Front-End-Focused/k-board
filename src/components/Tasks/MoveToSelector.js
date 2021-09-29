@@ -12,9 +12,7 @@ function MoveToSelector({ onChange }) {
           className="form-select form-select-sm"
           onChange={(event) => onChange(event.target.value)}
         >
-          <option value="" disabled>
-            Select
-          </option>
+          <option value="">Select</option>
           <option value="todo">To Do</option>
           <option value="inProgress">In Progress</option>
           <option value="testing">Testing</option>

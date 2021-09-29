@@ -1,14 +1,24 @@
-import { TASKS_ADD } from "./actionsTypes";
+import * as actions from "./actionsTypes";
 import { getUniqueID } from "../utils";
 
 export function tasksAdd({ title, assignee, column = "todo" }) {
   return {
-    type: TASKS_ADD,
+    type: actions.TASKS_ADD,
     payload: {
       id: getUniqueID(),
       title,
       assignee,
       column,
+    },
+  };
+}
+
+export function tasksUpdateStatus({ id, value }) {
+  return {
+    type: actions.TASKS_UPDATE_STATUS,
+    payload: {
+      id,
+      value,
     },
   };
 }
