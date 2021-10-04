@@ -22,3 +22,10 @@ export function tasksUpdateStatus({ id, value }) {
     },
   };
 }
+
+export function tasksGif({ gif }) {
+  return {
+    type: actions.TASKS_GIF,
+    payload: { gif },
+  };
+}

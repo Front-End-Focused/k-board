@@ -2,6 +2,7 @@ import * as actions from "./actionsTypes";
 
 const initialState = {
   tasks: [],
+  gif: null,
 };
 
 export function rootReducer(state = initialState, action) {
@@ -21,6 +22,11 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         tasks: [...newState, newTask],
+      };
+    case actions.TASKS_GIF:
+      return {
+        ...state,
+        gif: action.payload.gif,
       };
     default:
       return state;
