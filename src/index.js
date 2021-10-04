@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
 import { rootReducer } from "./store/rootReducer";
@@ -11,7 +12,7 @@ import App from "./App";
 // const REDUX_DEVTOOLS =
 //   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
-const middleware = [logger, gifMiddleware];
+const middleware = [logger, thunk, gifMiddleware];
 
 const store = createStore(rootReducer, applyMiddleware(...middleware));
 

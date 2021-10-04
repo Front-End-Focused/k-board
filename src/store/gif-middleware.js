@@ -1,5 +1,5 @@
 import { TASKS_UPDATE_STATUS } from "./actionsTypes";
-import { tasksGif } from "./actions";
+import { tasksFeedback } from "./actions";
 
 const gifMiddleware = (store) => (next) => (action) => {
   const nextAction = next(action);
@@ -10,15 +10,7 @@ const gifMiddleware = (store) => (next) => (action) => {
    * 4. remove gif after 1.5 second
    */
   if (action.type === TASKS_UPDATE_STATUS) {
-    fetch("https://run.mocky.io/v3/54de1035-dd36-4067-a8eb-acf2e8b979ce")
-      .then((response) => response.json())
-      .then((data) => {
-        store.dispatch(tasksGif({ gif: data.status[action.payload.value] }));
-        setTimeout(() => {
-          store.dispatch(tasksGif({ gif: null }));
-        }, 2000);
-      })
-      .catch((error) => console.log(error));
+    store.dispatch(tasksFeedback(action.payload.value));
   }
 
   return nextAction;
